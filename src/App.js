@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import CertificateWrapper from "./Components/CertificateSelector";
+import React, {useEffect, useState} from "react";
+import AddIcon from '@material-ui/icons/Add';
 function App() {
+  const [count, setCount] = useState(1)
+  
+  const onClick = () => {
+    setCount(count + 1)
+    //console.log(count)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="header">
+        <img
+          src="https://www.cs.drexel.edu/~dmz38/CCILogo.png"
+          alt="Drexel Logo"
+          className="logo"
+        ></img>
+        <button onClick={onClick}><AddIcon /></button>
+      </div>
+      {[...Array(count).keys()].map((c, index) => {
+        return(<CertificateWrapper count={index} key = {index} />)
+      })}
     </div>
   );
 }
