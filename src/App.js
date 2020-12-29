@@ -7,7 +7,6 @@ function App() {
   
   const onClick = () => {
     setCount(count + 1)
-    //console.log(count)
   }
   return (
     <div className="App">

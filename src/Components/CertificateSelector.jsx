@@ -62,6 +62,9 @@ function CertificateSelector(props) {
     document.getElementById("proceed" + props.count).disabled = disabled;
   };
 
+  const ch = () =>{
+    console.log("11")
+  }
   return (
     <div className="App">
       <div>
@@ -73,6 +76,7 @@ function CertificateSelector(props) {
                   className={"certificate" + props.count}
                   id="certificate1"
                   onChange={handleChange}
+                  style={{border: "2px solid #07294d"}}
                 >
                   <option value="Cert1" key="Cert1">
                     Certifcate 1
@@ -86,12 +90,12 @@ function CertificateSelector(props) {
                   ))}
                 </select>
               </td>
-              <td></td>
               <td>
                 <select
                   className={"certificate" + props.count}
                   id="certificate2"
                   onChange={handleChange}
+                  style={{border: "2px solid #07294d"}}
                 >
                   <option value="Cert2" key="Cert2">
                     Certifcate 2
@@ -105,12 +109,12 @@ function CertificateSelector(props) {
                   ))}
                 </select>
               </td>
-              <td></td>
               <td>
                 <select
                   className={"certificate" + props.count}
                   id="certificate3"
                   onChange={handleChange}
+                  style={{border: "2px solid #07294d"}}
                 >
                   <option value="Cert3" key="Cert3" >
                     Certifcate 3
@@ -124,10 +128,9 @@ function CertificateSelector(props) {
                   ))}
                 </select>
               </td>
-              <td></td>
               <td>
                 <button id={"proceed" + props.count} disabled>
-                <DoubleArrowIcon />
+                  <DoubleArrowIcon  onClick={props.Expander}/>
                 </button>
               </td>
             </tr>
@@ -143,8 +146,7 @@ function CertificateWrapper(props) {
   const [selectCerts, setSelectCerts] = useState(['','','']);
   const style={
     backgroundColor: "white",
-    //border:"2px solid black", 
-    margin: "20px"
+    margin: "20px",
   }
 
   const handleSelectCerts = (CertificateSelectorArr) => {
@@ -152,33 +154,69 @@ function CertificateWrapper(props) {
     console.log(selectCerts)
   }
 
+  const Expander = () => {
+    console.log("In Expander");
+    setVis(true);
+  }
+
   return (
     <div style={style}>
-      <ExpansionPanel expanded={vis}>
+      <ExpansionPanel expanded={vis} style={{border: "2px solid #07294d", borderRadius:"15px"}}> 
         <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon onClick={()=>{setVis(!vis)}}/>}
+          expandIcon={<ExpandMoreIcon onClick={()=>{setVis(!vis)}} />}
           style={{backgroundColor: "white"}}
         >
-          <CertificateSelector count={props.count} handleSelectCerts={handleSelectCerts}/>
+          <CertificateSelector count={props.count} Expander={Expander} handleSelectCerts={handleSelectCerts}/>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
+          <div>
           <table>
             <tbody>
               <tr>
-                <td>
-                  {
-                    selectCerts[0]
-                  }
+                <td style={{width: "250px", border:"2px solid #07294d", borderRadius:"15px"}}>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Pre-reqs</td>
+                      </tr>
+                      <tr><td>{selectCerts[0]}</td></tr>
+                    </tbody>
+                  </table>
                 </td>
-                <td>
-                  {selectCerts[1]}
+                <td style={{width: "250px", border:"2px solid #07294d", borderRadius:"15px"}}> 
+                <table>
+                    <tbody>
+                      <tr>
+                        <td>Pre-reqs</td>
+                      </tr>
+                      <tr><td>{selectCerts[1]}</td></tr>
+                    </tbody>
+                  </table>
                 </td>
-                <td>
-                  {selectCerts[2]}
+                <td style={{width: "250px", border:"2px solid #07294d", borderRadius:"15px"}}> 
+                <table>
+                    <tbody>
+                      <tr>
+                        <td>Pre-reqs</td>
+                      </tr>
+                      <tr><td>{selectCerts[2]}</td></tr>
+                    </tbody>
+                  </table>
                 </td>
               </tr>
             </tbody>
           </table>
+          <table>
+            <tbody>
+              <tr><td>Degrees</td></tr>
+              <tr>
+                <td style={{width: "250px"}}>{selectCerts[0]}</td>
+                <td style={{width: "250px"}}>{selectCerts[1]}</td>
+                <td style={{width: "250px"}}>{selectCerts[2]}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
