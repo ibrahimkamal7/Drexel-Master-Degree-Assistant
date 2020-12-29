@@ -5,27 +5,60 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useState } from "react";
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import Tooltip from '@material-ui/core/Tooltip';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { withStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+import Checkbox from '@material-ui/core/Checkbox';
+import getDegrees from "./Degrees";
+
+const degrees =[
+  {title:"Master of Science in Information", requirements:["HCI/UX", "Foundations of Data Science", "Front End Development"], mustHave:"HCI/UX"},
+  {title:"Master of Science in Computer Science", requirements:["Computer Science Foundations", "Software Architecture", "Advanced Computer Science"], mustHave:"Advanced Computer Science"},
+  {title:"Master of Science in Cyber Security", requirements:["Foundations of Data Science", "Software Architecture", "Cybersecurity"], mustHave:"Cybersecurity"},
+  {title:"Master of Science in Technology Leadership", requirements:["Information Systems", "Technology Leadership", "Computer Science Foundations"], mustHave:"Technology Leadership"},
+  {title:"Master of Science in Data Science", requirements:["Computer Science Foundations", "Foundations of Data Science", "AI/Machine Learning", "HCI/UX"], mustHave:"Foundations of Data Science"},
+  {title:"Master of Science in Information Systems", requirements:["Information Systems", "Software Architecture", "HCI/UX"], mustHave:"Information Systems"},
+  {title:"Master of Science in MLAI", requirements:["Artificial Intelligence/Machine Learning", "Computer Science Foundations", "Foundations of Data Science"], mustHave:"Artificial Intelligence/Machine Learning"},
+]
+
+const getMustHave = (deg) => {
+  return (degrees.filter((f) => (
+      f.title == deg
+  )).reduce((previous, current)=> (current.mustHave + previous), ""));
+}
+
+const GreenCheckbox = withStyles({
+  root: {
+    color: green[400],
+    '&$checked': {
+      color: green[600],
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="default" {...props} />);
+
 
 const certificates = [
-  { title: "HCI/UX", preRequisite: "" },
-  { title: "Information Systems", preRequisite: "" },
-  { title: "Foundations of Data Science", preRequisite: "" },
+  { title: "HCI/UX", preRequisite: ["None"] },
+  { title: "Information Systems", preRequisite: ["None"] },
+  { title: "Foundations of Data Science", preRequisite: ["None"] },
   {
     title: "Artificial Intelligence/Machine Learning",
-    preRequisite: "Base CS Foundation Course",
+    preRequisite: ["Computer Science Foundation"],
   },
-  { title: "Technology Leadership", preRequisite: "" },
-  { title: "Cybersecurity", preRequisite: "Base CS Foundation Course" },
-  { title: "Computer Science Foundations", preRequisite: "" },
+  { title: "Technology Leadership", preRequisite: ["None"] },
+  { title: "Cybersecurity", preRequisite: ["Computer Science Foundation"] },
+  { title: "Computer Science Foundations", preRequisite: ["None"] },
   {
     title: "Advanced Computer Science",
-    preRequisite: "Base CS Foundation Course",
+    preRequisite: ["Computer Science Foundation"],
   },
   {
     title: "Software Architecture",
-    preRequisite: "Base CS Foundation Course",
+    preRequisite: ["Computer Science Foundation"],
   },
-  { title: "Front-End Development", preRequisite: "" },
+  { title: "Front-End Development", preRequisite: ["None"] },
 ];
 
 
@@ -34,7 +67,6 @@ function CertificateSelector(props) {
   const [selectCerts, setSelectCerts] = useState(['','','']);
   
   const handleChange = () => {
-    console.log(props.count);
     const certifcateElement = document.getElementsByClassName(
       "certificate" + props.count
     );
@@ -59,12 +91,9 @@ function CertificateSelector(props) {
     for (var j = 0; j < selectedCertificate.length; j++) {
       if (selectedCertificate[j] === "") disabled = true;
     }
-    document.getElementById("proceed" + props.count).disabled = disabled;
+    
   };
 
-  const ch = () =>{
-    console.log("11")
-  }
   return (
     <div className="App">
       <div>
@@ -129,9 +158,11 @@ function CertificateSelector(props) {
                 </select>
               </td>
               <td>
-                <button id={"proceed" + props.count} disabled>
-                  <DoubleArrowIcon  onClick={props.Expander}/>
-                </button>
+                <Tooltip title="Proceed" arrow>
+                    <button disabled={(selectCerts[0]==="" || selectCerts[1]==="" || selectCerts[2]==="" )?true:false}>
+                      <DoubleArrowIcon  onClick={props.Expander}/>
+                    </button>
+                </Tooltip>
               </td>
             </tr>
           </tbody>
@@ -141,9 +172,16 @@ function CertificateSelector(props) {
   );
 }
 
+function FindPreqs(selectCerts) {
+  return (certificates.filter((m)=>(m.title === selectCerts)).reduce((previous, current)=>{
+    return ((previous.concat(current.preRequisite)))
+  }, [])) 
+}
+
 function CertificateWrapper(props) {
   const [vis, setVis] = useState(false);
   const [selectCerts, setSelectCerts] = useState(['','','']);
+  const [visDegree, setVisDegree] = useState(false);
   const style={
     backgroundColor: "white",
     margin: "20px",
@@ -151,19 +189,26 @@ function CertificateWrapper(props) {
 
   const handleSelectCerts = (CertificateSelectorArr) => {
     setSelectCerts(CertificateSelectorArr);
-    console.log(selectCerts)
+    setVisDegree(false);
   }
 
   const Expander = () => {
-    console.log("In Expander");
+    setVisDegree(true);
+    console.log(getDegrees(selectCerts[0], selectCerts[1], selectCerts[2]));
     setVis(true);
   }
 
   return (
     <div style={style}>
-      <ExpansionPanel expanded={vis} style={{border: "2px solid #07294d", borderRadius:"15px"}}> 
+      <ExpansionPanel expanded={selectCerts[0]!=="" && selectCerts[1]!=="" && selectCerts[2]!=="" && vis} style={{border: "2px solid #07294d", borderRadius:"15px"}}> 
         <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon onClick={()=>{setVis(!vis)}} />}
+          expandIcon={(selectCerts[0]==="" || selectCerts[1]==="" || selectCerts[2]==="")? <div></div> :
+          <Tooltip title="Show More" arrow>
+            <button onClick={()=>{setVis(!vis)}} style={{backgroundColor: "#07294d"}}>
+              <ExpandMoreIcon />
+            </button>
+          </Tooltip>
+          }
           style={{backgroundColor: "white"}}
         >
           <CertificateSelector count={props.count} Expander={Expander} handleSelectCerts={handleSelectCerts}/>
@@ -176,46 +221,79 @@ function CertificateWrapper(props) {
                 <td style={{width: "250px", border:"2px solid #07294d", borderRadius:"15px"}}>
                   <table>
                     <tbody>
-                      <tr>
-                        <td>Pre-reqs</td>
+                      <tr class="sub-header">
+                        <th>Pre-reqs</th>
                       </tr>
-                      <tr><td>{selectCerts[0]}</td></tr>
+                      <tr><td>
+                      {
+                        FindPreqs(selectCerts[0]).filter((m)=>(m!=="")).map((m, index) => {
+                          return <FormControlLabel key = {index}
+                          control={<GreenCheckbox checked={true} />}
+                          label={m}/>  
+                        })
+                      }
+                      </td></tr>
                     </tbody>
                   </table>
                 </td>
                 <td style={{width: "250px", border:"2px solid #07294d", borderRadius:"15px"}}> 
                 <table>
                     <tbody>
-                      <tr>
-                        <td>Pre-reqs</td>
+                    <tr class="sub-header">
+                        <th>Pre-reqs</th>
                       </tr>
-                      <tr><td>{selectCerts[1]}</td></tr>
+                      <tr><td>
+                      {
+                        FindPreqs(selectCerts[1]).filter((m)=>(m!=="")).map((m, index) => {
+                          return <FormControlLabel key = {index}
+                          control={<GreenCheckbox checked={true} />}
+                          label={m}/>  
+                        })
+                      }
+                      </td></tr>
                     </tbody>
                   </table>
                 </td>
                 <td style={{width: "250px", border:"2px solid #07294d", borderRadius:"15px"}}> 
                 <table>
                     <tbody>
-                      <tr>
-                        <td>Pre-reqs</td>
+                      <tr class="sub-header">
+                        <th>Pre-reqs</th>
                       </tr>
-                      <tr><td>{selectCerts[2]}</td></tr>
+                      <tr><td>
+                      {
+                        FindPreqs(selectCerts[2]).filter((m)=>(m!=="")).map((m, index) => {
+                          return <FormControlLabel key = {index}
+                          control={<GreenCheckbox checked={true} />}
+                          label={m}/>  
+                        }) 
+                      }
+                      </td></tr>
                     </tbody>
                   </table>
                 </td>
               </tr>
             </tbody>
           </table>
-          <table>
+          <div style={{display:(visDegree && selectCerts[0]!=="" && selectCerts[1]!=="" && selectCerts[2]!=="")?
+          "block":"none"}}>
+          <table style={{width: "865px" ,border:"2px solid #07294d", borderRadius:"15px", marginTop: "15px", marginLeft: "50px"}}>
             <tbody>
-              <tr><td>Degrees</td></tr>
+              <tr><th>Degrees</th></tr>
               <tr>
-                <td style={{width: "250px"}}>{selectCerts[0]}</td>
-                <td style={{width: "250px"}}>{selectCerts[1]}</td>
-                <td style={{width: "250px"}}>{selectCerts[2]}</td>
+                <td>
+                <ul>
+                  {
+                    getDegrees(selectCerts[0], selectCerts[1], selectCerts[2]).map((deg, index) => {
+                    return <li key={index}> <b>{deg}</b> <i style={{fontSize:"15px"}}><b style={{color:"red"}}>**</b>(Must Have Certificate: {getMustHave(deg)})</i></li>
+                    })
+                  }
+                </ul>
+                </td>
               </tr>
             </tbody>
           </table>
+          </div>
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
