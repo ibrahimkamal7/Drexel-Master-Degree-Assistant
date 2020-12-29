@@ -163,7 +163,9 @@ function CertificateWrapper(props) {
     <div style={style}>
       <ExpansionPanel expanded={vis} style={{border: "2px solid #07294d", borderRadius:"15px"}}> 
         <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon onClick={()=>{setVis(!vis)}} />}
+          expandIcon={(selectCerts[0]==="" || selectCerts[1]==="" || selectCerts[2]==="" )? <div> </div> :<button onClick={()=>{setVis(!vis)}} style={{width: "100px", borderRadius:"10%"}}>
+          Show More <DoubleArrowIcon />
+        </button>}
           style={{backgroundColor: "white"}}
         >
           <CertificateSelector count={props.count} Expander={Expander} handleSelectCerts={handleSelectCerts}/>
