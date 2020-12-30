@@ -11,7 +11,7 @@ function App() {
   const onClick = () => {
     setCount(count + 1);
   };
-  
+
   return (
     <div className="App">
       <div style={{ backgroundColor: "#07294d" }}>
@@ -44,11 +44,13 @@ function App() {
             </Tooltip>
           </Grid>
         </Grid>
+
       </div>
       {[...Array(count).keys()].map((c, index) => {
         return <CertificateWrapper count={index} key={index} />;
       })}
     </div>
+    
   );
 }
 
