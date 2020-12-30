@@ -6,8 +6,12 @@
 .logo{
   height: 70px;
 }
-
+label, span{
+  font-size: 14px!important;
+}
 select{
+  display:block;
+  margin:10px;
   width: 100%;
   height: 35px;
 }
