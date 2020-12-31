@@ -1,0 +1,23 @@
+#expansion-panel{
+    border: 2px solid #07294d;
+    border-radius: 15px;
+}
+#expand-button{
+    background-color: #07294d;
+}
+#expand-summary{
+    background-color: white;
+}
+#prereq-container1, #prereq-container2, #prereq-container3{
+    width: 250px;
+    border: 2px solid #07294d;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#show-degree{
+    border: 2px solid #07294d;
+    border-radius: 15px;
+    margin-top: 15px;
+}

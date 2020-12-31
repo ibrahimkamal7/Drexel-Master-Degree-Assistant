@@ -1,10 +1,11 @@
 import "../App.css";
-import CertificateWrapper from "../Components/CertificateSelector";
+import CertificateWrapper from "../Components/CertificateWrapper";
 import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
 import { useHistory } from "react-router";
+
 function Certifcate(props) {
     const [count, setCount] = useState(1);
   

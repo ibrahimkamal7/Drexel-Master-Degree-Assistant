@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router";
 import "../App.css"
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -35,6 +31,7 @@ const userDatabse = [
   {userid:"hv59", password:"123456", hasCSBackground:false},
   {userid:"hg387", password:"123456", hasCSBackground:true},
 ]
+
 export default function SignIn(props) {
   const classes = useStyles();
   const history = useHistory();
@@ -45,7 +42,7 @@ export default function SignIn(props) {
     }
     else{
       let tmp = userDatabse.filter((f) => {
-          return (f.userid == document.getElementsByTagName("input")[0].value && f.password == document.getElementsByTagName("input")[1].value)
+          return (f.userid === document.getElementsByTagName("input")[0].value && f.password === document.getElementsByTagName("input")[1].value)
         }).reduce((previous, current) => {
           return (current.hasCSBackground)
         }, "");
