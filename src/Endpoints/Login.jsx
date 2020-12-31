@@ -29,7 +29,10 @@ function Login() {
           </Grid>
         </Grid>
       </div>
-      <SignIn />)
+      <div>
+      <SignIn />
+      </div>
+    )
     </div>
   );
 }

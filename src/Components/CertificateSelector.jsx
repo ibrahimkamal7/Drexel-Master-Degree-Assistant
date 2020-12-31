@@ -11,6 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 import Checkbox from '@material-ui/core/Checkbox';
 import getDegrees from "./Degrees";
+import {useEffect} from "react";
 import $ from "jquery";
 
 const degrees =[
@@ -198,6 +199,10 @@ function CertificateWrapper(props) {
     console.log(getDegrees(selectCerts[0], selectCerts[1], selectCerts[2]));
     setVis(true);
   }
+
+  useEffect(()=>{
+    console.log("only on refresh");
+  });
 
   return (
     <div style={style}>

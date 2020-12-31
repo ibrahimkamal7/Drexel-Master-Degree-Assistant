@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
-
+import { useHistory } from "react-router";
 function Certifcate(props) {
     const [count, setCount] = useState(1);
   
     const onClick = () => {
       setCount(count + 1);
     };
-  
+    const history = useHistory();
     return (
       <div className="App">
         <div style={{ backgroundColor: "#07294d" }}>
@@ -46,7 +46,9 @@ function Certifcate(props) {
           </Grid>
         </div>
         {[...Array(count).keys()].map((c, index) => {
-          return <CertificateWrapper count={index} key={index} hasCSBackground={props.location.state.hasCSBackground}/>;
+          return <CertificateWrapper count={index} key={index} hasCSBackground={props.location.state ? props.location.state.hasCSBackground :  history.push({
+            pathname:  "/", 
+         })}/>;
         })}
       </div>
     );
