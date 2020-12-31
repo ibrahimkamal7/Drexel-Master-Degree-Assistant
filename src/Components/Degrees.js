@@ -1,4 +1,5 @@
 const degrees =[
+
     {title:"Master of Science in Information", requirements:["HCI/UX", "Foundations of Data Science", "Front End Development"], mustHave:"HCI/UX"},
     {title:"Master of Science in Computer Science", requirements:["Computer Science Foundations", "Software Architecture", "Advanced Computer Science"], mustHave:"Advanced Computer Science"},
     {title:"Master of Science in Cyber Security", requirements:["Foundations of Data Science", "Software Architecture", "Cybersecurity"], mustHave:"Cybersecurity"},
@@ -6,6 +7,7 @@ const degrees =[
     {title:"Master of Science in Data Science", requirements:["Computer Science Foundations", "Foundations of Data Science", "AI/Machine Learning", "HCI/UX"], mustHave:"Foundations of Data Science"},
     {title:"Master of Science in Information Systems", requirements:["Information Systems", "Software Architecture", "HCI/UX"], mustHave:"Information Systems"},
     {title:"Master of Science in MLAI", requirements:["Artificial Intelligence/Machine Learning", "Computer Science Foundations", "Foundations of Data Science"], mustHave:"Artificial Intelligence/Machine Learning"},
+    
 ]
 
 const getDegrees = (cert1, cert2, cert3) =>{

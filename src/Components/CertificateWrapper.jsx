@@ -190,7 +190,7 @@ function FindPreqs(selectCerts) {
               <Grid container spacing={3}>
                 <Grid
                   item
-                  xs={4}
+                  xs={3}
                   id="prereq-container1"
                 >
                   <Grid container spacing={2}>
@@ -226,7 +226,7 @@ function FindPreqs(selectCerts) {
                 </Grid>
                 <Grid
                   item
-                  xs={4}
+                  xs={3}
                   id="prereq-container2"
                 >
                   <Grid container spacing={2}>
@@ -262,7 +262,7 @@ function FindPreqs(selectCerts) {
                 </Grid>
                 <Grid
                   item
-                  xs={4}
+                  xs={3}
                   id="prereq-container3"
                 >
                   <Grid container spacing={2}>
