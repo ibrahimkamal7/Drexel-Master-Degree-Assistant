@@ -8,7 +8,8 @@ import Container from "@material-ui/core/Container";
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormLabel from '@material-ui/core/FormLabel';
-
+import { useHistory } from "react-router";
+import "../App.css"
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -29,51 +30,66 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+const userDatabse = [
+  {userid:"ik363", password:"123456", hasCSBackground:true},
+  {userid:"hv59", password:"123456", hasCSBackground:false},
+  {userid:"hg387", password:"123456", hasCSBackground:true},
+]
+export default function SignIn(props) {
   const classes = useStyles();
-  const [hasCSBackground, setHasCSBackground] = useState(false);
-
+  const history = useHistory();
+  let hasCSBackground = false
   const handleSubmit = () =>{
-    if(document.getElementsByTagName("input")[0].value === "" || (!document.getElementsByTagName("input")[1].checked && !document.getElementsByTagName("input")[2].checked)){
-        console.log(1)
+    if(document.getElementsByTagName("input")[0].value === "" || document.getElementsByTagName("input")[1].value === ""){
         window.alert("Fill out the form")
     }
     else{
-        if(document.getElementsByTagName("input")[1].checked){
-            setHasCSBackground(true)
-        }
-        if(document.getElementsByTagName("input")[2].checked){
-            setHasCSBackground(false)
-        }
+      let tmp = userDatabse.filter((f) => {
+          return (f.userid == document.getElementsByTagName("input")[0].value && f.password == document.getElementsByTagName("input")[1].value)
+        }).reduce((previous, current) => {
+          return (current.hasCSBackground)
+        }, "");
+
+      if (tmp !== "") {
+        hasCSBackground = tmp
+        history.push({
+          pathname:  "/certificate",
+          state: {
+            hasCSBackground: hasCSBackground
+          } 
+       });
+      }
+      else{
+        window.alert("User Name OR Password is not correct");
+      }
     }
 }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div className={classes.paper} id="bg">
+        <h1>Drexel Connect</h1>
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="name"
-            label="Name"
-            name="name"
+            id="username"
+            label="User ID"
+            name="username"
             autoFocus
           />
-          <FormLabel component="legend">Do you have a CS background?</FormLabel>
-          <RadioGroup
-            aria-label="cs-background"
-            name="cs-background"
-          >
-            <FormControlLabel
-              value="yes"
-              control={<Radio />}
-              label="Yes"
-            />
-            <FormControlLabel value="No" control={<Radio />} label="No" />
-          </RadioGroup>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="password"
+            label="Password"
+            name="password"
+            autoFocus
+          />
         </form>
         <Button
             type="submit"
