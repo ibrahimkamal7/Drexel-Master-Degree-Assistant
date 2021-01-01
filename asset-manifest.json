@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Drexel-Master-Degree-Assistant/static/css/main.d717a3ab.chunk.css",
+    "main.js": "/Drexel-Master-Degree-Assistant/static/js/main.00dc1039.chunk.js",
+    "main.js.map": "/Drexel-Master-Degree-Assistant/static/js/main.00dc1039.chunk.js.map",
+    "runtime-main.js": "/Drexel-Master-Degree-Assistant/static/js/runtime-main.57827e9e.js",
+    "runtime-main.js.map": "/Drexel-Master-Degree-Assistant/static/js/runtime-main.57827e9e.js.map",
+    "static/js/2.445fbf5a.chunk.js": "/Drexel-Master-Degree-Assistant/static/js/2.445fbf5a.chunk.js",
+    "static/js/2.445fbf5a.chunk.js.map": "/Drexel-Master-Degree-Assistant/static/js/2.445fbf5a.chunk.js.map",
+    "static/js/3.32a5a675.chunk.js": "/Drexel-Master-Degree-Assistant/static/js/3.32a5a675.chunk.js",
+    "static/js/3.32a5a675.chunk.js.map": "/Drexel-Master-Degree-Assistant/static/js/3.32a5a675.chunk.js.map",
+    "index.html": "/Drexel-Master-Degree-Assistant/index.html",
+    "static/css/main.d717a3ab.chunk.css.map": "/Drexel-Master-Degree-Assistant/static/css/main.d717a3ab.chunk.css.map",
+    "static/js/2.445fbf5a.chunk.js.LICENSE.txt": "/Drexel-Master-Degree-Assistant/static/js/2.445fbf5a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.57827e9e.js",
+    "static/js/2.445fbf5a.chunk.js",
+    "static/css/main.d717a3ab.chunk.css",
+    "static/js/main.00dc1039.chunk.js"
+  ]
+}
