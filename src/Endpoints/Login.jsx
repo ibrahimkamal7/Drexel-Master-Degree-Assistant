@@ -23,10 +23,10 @@ function Login() {
                 fontSize: "25px",
                 color: "white",
                 marginTop: "20px",
-                marginLeft: "50px"
+                marginLeft: "35px"
               }}
             >
-              Degree Assistant
+              Welcome To Degree Assistant
             </div>
           </Grid>
         </Grid>
