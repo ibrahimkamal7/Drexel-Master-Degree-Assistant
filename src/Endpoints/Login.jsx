@@ -23,7 +23,7 @@ function Login() {
                 fontSize: "25px",
                 color: "white",
                 marginTop: "20px",
-                marginLeft: "120px"
+                marginLeft: "50px"
               }}
             >
               Welcome To Degree Assistant
