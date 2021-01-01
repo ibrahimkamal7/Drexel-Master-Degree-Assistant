@@ -26,7 +26,7 @@ function Login() {
                 marginLeft: "35px"
               }}
             >
-              Assistant
+              Welcome To Degree Assistant
             </div>
           </Grid>
         </Grid>
