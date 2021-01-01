@@ -137,8 +137,9 @@ function CertificateSelector(props) {
                     ? true
                     : false
                 }
+                onClick={props.Expander} 
               >
-                <DoubleArrowIcon onClick={props.Expander} />
+                <DoubleArrowIcon/>
               </button>
             </Tooltip>
           </Grid>
