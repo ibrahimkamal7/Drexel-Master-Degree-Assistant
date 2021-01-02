@@ -3,6 +3,11 @@
 ## About
 The web app is targeted towards potential Drexel CCI graduate students. Students need a flexible way to create a master’s program that fits their academic and professional goals. This tool will help students envisage the different combination of certificates that they can take to form a full master’s degree at CCI. 
 
+The application is hosted on  https://ibrahimkamal7.github.io/Drexel-Master-Degree-Assistant/#/
+
+Use any of the user info provided in the database section for signing in.
+
+
 ## Scalability
 
 The application is getting information about the degrees and the certificates from their respective databases, so it would be easy to scale the application to support additional certificates and degrees.
