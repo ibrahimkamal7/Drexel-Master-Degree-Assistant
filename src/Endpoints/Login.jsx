@@ -16,19 +16,6 @@ function Login() {
               style={{ marginTop: "5px", maxWidth: "100%" }}
             ></img>
           </Grid>
-          <Grid item xs={4}>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "25px",
-                color: "white",
-                marginTop: "20px",
-                marginLeft: "35px"
-              }}
-            >
-              Welcome To Degree Assistant
-            </div>
-          </Grid>
         </Grid>
       </div>
       <div>

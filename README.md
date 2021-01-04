@@ -30,13 +30,16 @@ The application is getting information about the degrees and the certificates fr
 
 ## User Testing Feedback
 
-We had our application hosted on github using github pages and then sent out a google form to all of our friends and bachmates and asked them about the design and UI/UX of the application. We got the following suggestions in return:
+We had our application hosted on github using github pages and then sent out a google form to all of our friends and bachmates and asked them about the design and UI/UX of the application. The User pool consists of people with different skills and background such as business majors, technology majors, undergrad-grad international students, etc.We got the following suggestions in return:
 * Use dropdowns for selecting the certificates instead of checkboxes. Checkboxes makes the navigation harder
 * Ensure that the users have the option to expand or hide information about the degrees and prerequisite
 * Ensure that the information about the user's CS background is collected using the information present in the Drexel Database
 * Ensure that the prerequisite of each certificate and the degrees which can be obtained are displayed separately
+* Additionally, users preferred to somehow compare multiple selections of 3-certificates options on the single page
+* Mandatory certificates required to complete the degree should get populated next to degrees instead of somewhere else on the page.
 
-After receiving the feedback, we worked on the suggestions and tried to incorporate most of them into our application, but the following where out of scope for this project:
+
+After receiving the feedback, we worked on the suggestions and tried to incorporate most of them into our application. One statistic that stood for the success of the new design is that users took only 2 minutes on average to get their results. This statistic is asked as a question in the form. However, the following where out of scope for this project:
 * After signing in the users are redirected to the page where they select certificates and if they hit refresh they are redirected to the sign in page. Some of the reviewers/testers suggested that the application should not do this. But, in order to achieve this, a proper user database is required and the information used for signing in has to be stored in cookies or sessions.
 
 
@@ -74,6 +77,10 @@ After receiving the feedback, we worked on the suggestions and tried to incorpor
 {userid:"hv59", password:"123456", hasCSBackground:false},
 {userid:"hg387", password:"123456", hasCSBackground:true},
 ```
+## Challenges Faced:
+* Drawing the line for the scope for the prototype was difficult given the open-ended constraints of the competition.
+* Selection of technologies used in the prototype was difficult given the time-constraints of the competition.
+
 ## How to run the application
 * Clone this directory
 * Run `npm install` inside the directory to install all the dependencies
