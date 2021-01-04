@@ -39,7 +39,7 @@ We had our application hosted on github using github pages and then sent out a g
 * Mandatory certificates required to complete the degree should get populated next to degrees instead of somewhere else on the page.
 
 
-After receiving the feedback, we worked on the suggestions and tried to incorporate most of them into our application. One statistic that stood for the success of the new design is that users took only 2 minutes on average to get their results. This statistic is asked as a question in the form. However, the following where out of scope for this project:
+After receiving the feedback, we worked on the suggestions and tried to incorporate most of them into our application. One statistic that stood for the success of the new design is that users took only 2 minutes on average to get their results. This statistic is asked as a question in the form. However, the following were out of scope for this project:
 * After signing in the users are redirected to the page where they select certificates and if they hit refresh they are redirected to the sign in page. Some of the reviewers/testers suggested that the application should not do this. But, in order to achieve this, a proper user database is required and the information used for signing in has to be stored in cookies or sessions.
 
 
