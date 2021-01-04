@@ -1,12 +1,18 @@
 # Drexel Master's Degree Assistant
 
 ## About
+
 The web app is targeted towards potential Drexel CCI graduate students. Students need a flexible way to create a master’s program that fits their academic and professional goals. This tool will help students envisage the different combination of certificates that they can take to form a full master’s degree at CCI. 
 
 The application is hosted on  https://ibrahimkamal7.github.io/Drexel-Master-Degree-Assistant/#/
 
+The source code can be found at https://github.com/ibrahimkamal7/Drexel-Master-Degree-Assistant
+
 Use any of the user info provided in the database section for signing in.
 
+## How we built it
+
+The application is built using React.js, a javascript based library and material-ui.
 
 ## Scalability
 
@@ -17,7 +23,7 @@ The application is getting information about the degrees and the certificates fr
 
 
 ## Integration
-* The users will have to sign-in in order to use the application (eventually, this can be replaced with Drexel Connect), and based on their profile they will be notified whether they have to complete the CS Foundation certificate or not if they are planning on completing a more technical certificates
+* The users will have to sign-in in order to use the application (eventually, this can be replaced with Drexel Connect), and based on their profile they will be notified whether they have to complete the CS Foundation certificate or not if they are planning on completing one of the technical certificates
 * After the user selects the three certificates, they get the degrees which they can obtain along with the certificate which is a must have for that degree.
 
 
@@ -30,8 +36,8 @@ The application is getting information about the degrees and the certificates fr
 
 ## User Testing Feedback
 
-We had our application hosted on github using github pages and then sent out a google form to all of our friends and bachmates and asked them about the design and UI/UX of the application. The User pool consists of people with different skills and background such as business majors, technology majors, undergrad-grad international students, etc.We got the following suggestions in return:
-* Use dropdowns for selecting the certificates instead of checkboxes. Checkboxes makes the navigation harder
+We had our application hosted on github using github pages and then sent out a google form to all of our friends, seniors and bachmates and asked them about the design and UI/UX of the application. The testing pool consisted of people with different skills and background such as business majors, technology majors, undergrad-grad international students, etc. We got the following suggestions in return:
+* Use dropdowns for selecting the certificates instead of checkboxes. Checkboxes makes the navigation harder is more certificates are added.
 * Ensure that the users have the option to expand or hide information about the degrees and prerequisite
 * Ensure that the information about the user's CS background is collected using the information present in the Drexel Database
 * Ensure that the prerequisite of each certificate and the degrees which can be obtained are displayed separately
@@ -82,7 +88,7 @@ After receiving the feedback, we worked on the suggestions and tried to incorpor
 * Selection of technologies used in the prototype was difficult given the time-constraints of the competition.
 
 ## How to run the application
-* Clone this directory
+* Clone the directory found at found at https://github.com/ibrahimkamal7/Drexel-Master-Degree-Assistant
 * Run `npm install` inside the directory to install all the dependencies
 * Run `npm start` to run the app in the development mode.
 * Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

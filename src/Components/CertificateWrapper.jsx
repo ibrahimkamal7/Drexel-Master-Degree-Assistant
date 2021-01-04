@@ -195,7 +195,7 @@ function FindPreqs(selectCerts) {
                 >
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
-                    <p><b>Pre-Requisite</b> - <i>Certficate 1</i></p>
+                    <p><b>Pre-Requisite</b> - <i>Certificate 1</i></p>
                     </Grid>
                     {FindPreqs(selectCerts[0])
                       .filter((m) => m !== "")
@@ -231,7 +231,7 @@ function FindPreqs(selectCerts) {
                 >
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
-                    <p><b>Pre-Requisite</b> - <i>Certficate 2</i></p>
+                    <p><b>Pre-Requisite</b> - <i>Certificate 2</i></p>
                     </Grid>
                     {FindPreqs(selectCerts[1])
                       .filter((m) => m !== "")
@@ -267,7 +267,7 @@ function FindPreqs(selectCerts) {
                 >
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
-                      <p><b>Pre-Requisite</b> - <i>Certficate 3</i></p>
+                      <p><b>Pre-Requisite</b> - <i>Certificate 3</i></p>
                     </Grid>
                     {FindPreqs(selectCerts[2])
                       .filter((m) => m !== "")
